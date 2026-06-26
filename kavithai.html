@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>கவியாழனின் கவிதை🌸</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Noto Sans Tamil",sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+
+    background:linear-gradient(135deg,
+        #d05bc8,
+        #6f5cf0,
+        #4848d7,
+        #d05bc8);
+}
+
+.container{
+    width:92%;
+    max-width:900px;
+    text-align:center;
+}
+
+.line{
+    color:#fff;
+    font-size:1.18rem;
+    font-weight:500;
+    line-height:1.9;
+    opacity:0;
+    transform:translateY(25px);
+    transition:all 1s ease;
+}
+
+.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* Last Line Glow */
+
+.glow{
+    font-weight:bold;
+    animation:glowPulse 1.8s ease-in-out infinite alternate;
+}
+
+@keyframes glowPulse{
+
+0%{
+
+text-shadow:
+0 0 8px #ffffff,
+0 0 15px #ffd6f2,
+0 0 25px #ff9ad5;
+
+transform:scale(1);
+
+}
+
+100%{
+
+text-shadow:
+0 0 10px #ffffff,
+0 0 20px #ffd6f2,
+0 0 35px #ff69b4,
+0 0 50px #ff69b4;
+
+transform:scale(1.08);
+
+}
+
+}
+
+/* Start Button */
+
+#startBtn{
+
+padding:18px 45px;
+
+font-size:22px;
+
+font-weight:bold;
+
+border:none;
+
+border-radius:50px;
+
+cursor:pointer;
+
+background:linear-gradient(135deg,#e8a1c4,#f8a8d0);
+
+color:#fff;
+
+box-shadow:0 10px 25px rgba(255,182,193,.45);
+
+transition:.3s;
+
+}
+
+#startBtn:hover{
+
+transform:scale(1.06);
+
+box-shadow:0 15px 35px rgba(255,182,193,.65);
+
+}
+
+#startBtn:active{
+
+transform:scale(.97);
+
+}
+
+.hidden{
+    display:none;
+}
+
+audio{
+    display:none;
+}
+
+/* Tablet */
+
+@media(max-width:768px){
+
+.line{
+
+font-size:1rem;
+
+line-height:1.8;
+
+}
+
+#startBtn{
+
+font-size:18px;
+
+padding:15px 35px;
+
+}
+
+}
+
+/* Mobile */
+
+@media(max-width:480px){
+
+.line{
+
+font-size:.92rem;
+
+line-height:1.75;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<button id="startBtn">▶ Start Here</button>
+
+<div class="container hidden" id="poem">
+
+<div class="line">மை பூசாத கண்கள்</div>
+
+<div class="line">என்னை மெதுவாக மயக்கத்தில் மூழ்கடித்தது...</div>
+
+<div class="line">சாயம் பூசாத உதடுகள்</div>
+
+<div class="line">சொல்லாமலே சுகமான சுவையை சேர்த்தது...</div>
+
+<div class="line">பத்து விரல்கள்</div>
+
+<div class="line">பருகாத பாசத்தை பரவசமாய் பரப்புது...</div>
+
+<div class="line">உன் கால்களை மட்டும் நான் சொல்லவில்லையென்று கேட்கிறாயா?</div>
+
+<div class="line">தேவதைகளுக்கு எதடி கால்கள்... என் மனதில் இருக்கும் உனக்கு... ❤️</div>
+
+<div class="line glow">அவளுக்காக மட்டும்... 💖</div>
+
+</div>
+
+<audio id="music" loop>
+    <source src="kk.mpeg" type="audio/mpeg">
+</audio>
+
+<script>
+
+const btn=document.getElementById("startBtn");
+const poem=document.getElementById("poem");
+const music=document.getElementById("music");
+const lines=document.querySelectorAll(".line");
+
+btn.addEventListener("click",()=>{
+
+    btn.style.display="none";
+
+    poem.classList.remove("hidden");
+
+    music.play().catch(err=>console.log(err));
+
+    lines.forEach((line,index)=>{
+
+        setTimeout(()=>{
+
+            line.classList.add("show");
+
+        },index*2000);
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
